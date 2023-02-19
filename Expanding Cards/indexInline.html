@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Expanding Cards</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    body {
+      background: linear-gradient(#e66465, #9198e5);
+      font-family: "Courier New", Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      width: 90vw;
+    }
+
+    .panel {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh;
+      border-radius: 50px;
+      color: #000000;
+      cursor: pointer;
+      flex: 0.5;
+      margin: 10px;
+      position: relative;
+      transition: flex 0.7s ease-in;
+    }
+    .panel h3 {
+      font-size: 24px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      margin: 0;
+      opacity: 0;
+    }
+
+    .panel.active {
+      flex: 5;
+    }
+
+    .panel.active h3 {
+      opacity: 1;
+      transition: opacity 0.3s ease-in 0.65s;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 100vw;
+      }
+
+      .panel:nth-of-type(4),
+      .panel:nth-of-type(5) {
+        display: none;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div
+        class="panel active"
+        style="
+          background-image: url('https://images.wallpaperscraft.com/image/single/landscape_mountains_sun_140434_3840x2160.jpg');
+        "
+      >
+        <h3>Landscape Mountains</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://images.wallpaperscraft.com/image/single/forest_fog_trees_132037_3840x2160.jpg');
+        "
+      >
+        <h3>Forest Fog Trees</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://images.wallpaperscraft.com/image/single/autumn_forest_trees_129892_3840x2160.jpg');
+        "
+      >
+        <h3>Autumn Forest Trees</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://images.wallpaperscraft.com/image/single/starry_sky_boat_reflection_125803_3840x2160.jpg');
+        "
+      >
+        <h3>Sky Boat Reflection</h3>
+      </div>
+      <div
+        class="panel"
+        style="
+          background-image: url('https://images.wallpaperscraft.com/image/single/road_asphalt_marking_130996_3840x2160.jpg');
+        "
+      >
+        <h3>Road Asplhalt</h3>
+      </div>
+    </div>
+    <script>
+      const panels = document.querySelectorAll(".panel");
+
+      panels.forEach((panel) => {
+        panel.addEventListener("click", () => {
+          removeActiveClasses();
+          panel.classList.add("active");
+        });
+      });
+
+      function removeActiveClasses() {
+        panels.forEach((panel) => {
+          panel.classList.remove("active");
+        });
+      }
+    </script>
+  </body>
+</html>
